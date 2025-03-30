@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Provider } from "@/components/ui/provider";
-import { ColorModeButton } from "@/components/ui/color-mode"
+import Sidebar from "@/components/Sidebar/General/default";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Provider>
-          <ColorModeButton />
+          <Sidebar />
           {children}
         </Provider>
       </body>
