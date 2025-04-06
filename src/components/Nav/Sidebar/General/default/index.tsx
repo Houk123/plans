@@ -1,5 +1,5 @@
 import { navLinks } from "@/lib/nav/NavLinks";
-import { Box, Button, ButtonGroup, IconButton, Link, Menu, Portal } from "@chakra-ui/react";
+import { Box, Link, Collapsible, Flex } from "@chakra-ui/react";
 import React from "react";
 import { LuChevronDown } from "react-icons/lu";
 
@@ -12,29 +12,19 @@ const NavSidebarGeneral = () => {
                 {navLinks.map(link => (
                     <li key={link.name}>
                         {link.hasOwnProperty("submenu") && Array.isArray(link.submenu) ? (
-                            <Menu.Root>
-                                <ButtonGroup size="sm" variant="outline" attached>
-                                    <Button asChild variant="outline">
-                                        <Link href={link.href}>{link.title}</Link>
-                                    </Button>
-                                    <Menu.Trigger asChild>
-                                        <IconButton variant="outline">
-                                            <LuChevronDown />
-                                        </IconButton>
-                                    </Menu.Trigger>
-                                </ButtonGroup>
-                                <Portal>
-                                    <Menu.Positioner>
-                                        <Menu.Content>
-                                            {link.submenu.map((submenuLink, index) => (
-                                                <Menu.Item asChild value={`submenu_${link.name}_index_${index}}`}>
-                                                    <Link href={submenuLink.href}>{submenuLink.title}</Link>
-                                                </Menu.Item>
-                                            ))}
-                                        </Menu.Content>
-                                    </Menu.Positioner>
-                                </Portal>
-                        </Menu.Root>
+                            <Collapsible.Root>
+                                <Flex alignContent="center">
+                                    <Link href={link.href}>{link.title}</Link>
+                                    <Collapsible.Trigger asChild>
+                                        <LuChevronDown />
+                                    </Collapsible.Trigger> 
+                                </Flex>
+                                <Collapsible.Content>
+                                    {link.submenu.map((submenuLink, index) => (
+                                        <Link key={index} href={submenuLink.href}>{submenuLink.title}</Link>
+                                    ))}
+                                </Collapsible.Content>
+                        </Collapsible.Root>
                         ) : (
                             <Link href={link.href}>{link.title}</Link>
                         )}
