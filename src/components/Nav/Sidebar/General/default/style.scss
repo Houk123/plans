@@ -1,0 +1,13 @@
+.nav-sidebar{
+    font-size: $ft-s-lg;
+    ul{
+        li{
+            margin-inline-start: $m-xs;
+            margin-block-start: $m-2xs;
+        }
+        :first-child{
+            margin-block-start: 0;
+        }
+    }
+    
+}

@@ -12,20 +12,20 @@ export const navLinks: NavLinksInterface[] = [
         submenu: [
             {
                 name: "plans_my",
-                title: "Мой план",
-                href: "/plans/my",
+                title: "Мой",
+                href: "/plans/my"
             },
             {
                 name: "plans_command",
-                title: "План команды",
+                title: "Команды",
                 href: "/plans/command",
             },{
                 name: "plans_manager",
-                title: "План менеджеров",
+                title: "Менеджеров",
                 href: "/plans/managers",
             },{
                 name: "plans_subdordinates",
-                title: "План подопечных",
+                title: "Подопечных",
                 href: "/plans/subordinates",
             }
         ]
