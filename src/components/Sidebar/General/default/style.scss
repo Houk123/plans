@@ -1,4 +1,11 @@
 .sidebar{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
     height: $fullHeight;
     padding: $p-md;
+
+    border-right: $b-w solid $clr-primary-gray-op;
+
+    font-size: $ft-s-lg;
 }
