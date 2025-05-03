@@ -1,3 +1,7 @@
+//color
+$clr-primary-gray: hsl(0, 0%, 70%);
+$clr-primary-gray-op: hsla(0, 0%, 70%, .5); 
+
 $fullHeight: 100vh;
 $fullWidth: 100vw;
 
@@ -22,3 +26,6 @@ $m-md: 1rem;
 $m-lg: 1.25rem;
 $m-xl: 1.5rem;
 $m-2xl: 1.75rem;
+
+//border
+$b-w: .1rem;

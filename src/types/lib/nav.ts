@@ -1,10 +1,10 @@
-import {FC, SVGProps} from "react";
+import { ReactNode } from "react";
 
 export interface NavLinksInterface{
     name: string
     title: string
     href: string
     img?: string
-    icon?: FC<SVGProps<SVGSVGElement>>
+    icon?: ReactNode
     submenu?: NavLinksInterface[]
 }

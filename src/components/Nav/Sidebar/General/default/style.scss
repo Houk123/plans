@@ -1,5 +1,6 @@
 .nav-sidebar{
-    font-size: $ft-s-lg;
+    //width: 15rem;
+    overflow: hidden;
     ul{
         li{
             margin-inline-start: $m-xs;
@@ -10,4 +11,7 @@
         }
     }
     
+    &__link{
+        align-items: center;
+    }
 }
