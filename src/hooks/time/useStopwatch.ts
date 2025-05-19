@@ -1,49 +1,27 @@
-import { useTimerStore } from "@/stores/timers";
 import { useEffect, useRef } from "react";
 
 interface IStopwatch {
-  idTask?: number;
+    isRunning: boolean;
+    startTime: () => void,
+    stopTime: () => void,
+    incrementTime: () => void,
 }
 
-export const useStopwatch = ({ idTask }: IStopwatch) => {
-    const addTask = useTimerStore(state => state.addTask);
-
-    const time = useTimerStore(state =>
-    idTask !== undefined
-        ? state.timersTask[idTask]?.time ?? 0
-        : state.globalsTimers.time
-    );
-
-    const isRunning = useTimerStore(state =>
-    idTask !== undefined
-        ? state.timersTask[idTask]?.isRunning ?? false
-        : state.globalsTimers.isRunning
-    );
-
-    const setTime = useTimerStore(state => state.setTimeTask);
-    const setTimeGlobals = useTimerStore(state => state.setTimeGlobals);
-
-    const startTask = useTimerStore(state => state.startTask);
-    const stopTask = useTimerStore(state => state.stopTask);
-    const startTimeGlobals = useTimerStore(state => state.startTimeGlobals);
-    const stopTimeGlobals = useTimerStore(state => state.stopTimeGlobals);
+export const useStopwatch = (props: IStopwatch) => {
+    const {
+        isRunning,
+        startTime,
+        stopTime,
+        incrementTime,
+    } = props;
 
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
-        if(idTask !== undefined){
-            addTask(idTask);
-        }
-    },[idTask, addTask])
-
-    useEffect(() => {
         if (isRunning && intervalRef.current === null) {
             intervalRef.current = setInterval(() => {
-                if (idTask !== undefined) {
-                    setTime(idTask, (prev) => prev + 1);
-                } else {
-                    setTimeGlobals((prev) => prev + 1);
-                }
+                console.log('test')
+                incrementTime();
             }, 1000);
         }
 
@@ -57,22 +35,14 @@ export const useStopwatch = ({ idTask }: IStopwatch) => {
             clearInterval(intervalRef.current);
             }
         };
-    }, [isRunning, idTask, setTime, setTimeGlobals]);
+    }, [isRunning]);
 
     const start = () => {
-        if (idTask !== undefined) {
-            startTask(idTask);
-        } else {
-            startTimeGlobals()
-        }
+        startTime()
     };
 
     const stop = () => {
-        if (idTask !== undefined) {
-            stopTask(idTask);
-        } else {
-            stopTimeGlobals()
-        }
+        stopTime()
     };
 
     const formatTime = (t: number) => {
@@ -84,7 +54,6 @@ export const useStopwatch = ({ idTask }: IStopwatch) => {
     };
 
     return {
-        time,
         isRunning,
         start,
         stop,

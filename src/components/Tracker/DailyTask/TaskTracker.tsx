@@ -1,6 +1,7 @@
 import { useStopwatch } from "@/hooks/time/useStopwatch";
 import { Button, Progress, Stat, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
+import { useTimerStore } from "@/stores/timers";
 
 interface ITaskTrackerProps{
     idTask: number
@@ -13,10 +14,27 @@ const TaskTracker: React.FC<ITaskTrackerProps> = (props) => {
         fullTime
     } = props;
 
+    const addTask = useTimerStore(state => state.addTask);
+    const setTime = useTimerStore(state => state.setTimeTask);
+    const time = useTimerStore(state => state.timersTask[idTask]?.time ?? 0);
+    const isRunning = useTimerStore(state => state.timersTask[idTask]?.isRunning);
+    const startTask = useTimerStore(state => state.startTask);
+    const stopTask = useTimerStore(state => state.stopTask);
+
     const {
             start, stop, 
-            time, formattedTime
-    } = useStopwatch({idTask});
+            formattedTime
+    } = useStopwatch({
+        isRunning: isRunning,
+        startTime: () => startTask(idTask),
+        stopTime: () => stopTask(idTask),
+        incrementTime: () => setTime(idTask, (prev) => prev + 1),
+    });
+
+    useEffect(() => {
+        addTask(idTask)
+    },[idTask]);
+
     return (
         <Stat.Root>
             <Stat.Label>Создать юнит тесты</Stat.Label>
