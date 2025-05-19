@@ -19,7 +19,7 @@ const NavSidebarGeneral: React.FC = () => {
     return (
         <motion.nav 
             className="nav-sidebar"
-            animate={{ width: isOpen ? "12rem" : "3rem"}} 
+            animate={{ width: isOpen ? "100%" : "3rem"}} 
             transition={{ duration: 0.5 }}   
         >
             <Box as="ul" listStyleType="none">

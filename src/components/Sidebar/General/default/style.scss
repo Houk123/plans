@@ -8,4 +8,7 @@
     border-right: $b-w solid $clr-primary-gray-op;
 
     font-size: $ft-s-lg;
+    &__main{
+        align-items: start;
+    }
 }

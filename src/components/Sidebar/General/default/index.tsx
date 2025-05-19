@@ -21,8 +21,8 @@ const SidebarGenaral: React.FC = () => {
     
     return (
         <aside className="sidebar">
-            <VStack className="sidebar__main">
-                <Flex w="100%" justifyContent="flex-end">
+            <VStack className="sidebar__main" alignItems="center">
+                <Flex w="100%" alignItems="center" justifyContent="flex-start">
                     <IconButton
                         variant="outline" 
                         aria-label="Search database" 
