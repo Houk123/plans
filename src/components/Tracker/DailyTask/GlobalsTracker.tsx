@@ -7,12 +7,8 @@ import { Flex, Text } from "@chakra-ui/react";
 import { useTimerStore } from "@/stores/timers";
 import PlayPauseButton from "@/components/ui-my-plans/PlayPauseButton";
 import { formatTime } from "@/scripts/time";
-import { useSidebarStore } from "@/stores/sidebar";
-
 
 const GlobalsTracker: React.FC = () => {
-    const { isOpen } = useSidebarStore();
-
     const setTimeGlobals = useTimerStore(state => state.setTimeGlobals);
     const time = useTimerStore(state => state.globalsTimers.time);
     const isRunning = useTimerStore(state =>state.globalsTimers.isRunning);
