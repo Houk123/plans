@@ -1,40 +1,38 @@
-import React from "react";
+"use client"
+
+import React, { useState } from "react";
 import { Tooltip } from "@/components/ui/tooltip";
-import { useSidebarStore } from "@/stores/sidebar";
-import { Collapsible, Flex, Link } from "@chakra-ui/react";
-import { AnimatePresence, motion } from "framer-motion";
+import { Collapsible, Flex, Link, Icon } from "@chakra-ui/react";
 import { LuChevronDown } from "react-icons/lu";
 import { NavLinksInterface } from "@/types/lib/nav";
+import { motion } from "framer-motion";
 
 interface ILinkSidebar{
     link: NavLinksInterface
 }
-
+const MotionComponent = motion.create(Icon)
 const LinkSidebar: React.FC<ILinkSidebar> = (props) => {
-    const { isOpen } = useSidebarStore();
     const { link } = props;
-
+    const [isOpen, setIsOpen] = useState(false); 
     return (
         <Tooltip content={link.title}>
             <Flex className="nav-sidebar__link">
                 <Link href={link.href}>
                     {link.icon} 
-                    <AnimatePresence>
-                        {isOpen && (
-                            <motion.span
-                                initial={{ opacity: 0, x: -10}}
-                                animate={{ opacity: 1, x: 0}}
-                                exit={{ opacity: 0,x: -10 }}
-                                transition={{ duration: .5 }}    
-                            >
-                                {link.title}
-                            </motion.span>
-                        )}
-                    </AnimatePresence>
+                    <span>
+                        {link.title}
+                    </span>
                 </Link>
                 {link.hasOwnProperty("submenu") && (
                     <Collapsible.Trigger asChild>
-                        <LuChevronDown />
+                        <MotionComponent
+                            animate={{ rotate: isOpen ? 180 : 0}} 
+                            transition={{ duration: 0.5 }}  
+                            
+                            onClick={() => setIsOpen(prev => !prev)}
+                        >
+                            <LuChevronDown />
+                        </MotionComponent>
                     </Collapsible.Trigger> 
                 )}
             </Flex>

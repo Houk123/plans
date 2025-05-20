@@ -1,19 +1,24 @@
 import {create} from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
 
-interface SidebarStore{
+interface SidebarStoreState{
     isOpen: boolean;
     isHydrated: boolean;
+}
+
+interface SidebarStoreActions{
     setHydrated: (value: boolean) => void;
     toggle: () => void;
     open: () => void;
     close: () => void;
 }
 
+type SidebarStore = SidebarStoreState & SidebarStoreActions;
+
 export const useSidebarStore = create<SidebarStore>()(
     persist(
         (set) => ({
-            isOpen: false,
+            isOpen: true,
             isHydrated: false,
             toggle: () => set((state) => ({ isOpen: !state.isOpen })),
             open: () => set({ isOpen: true }),

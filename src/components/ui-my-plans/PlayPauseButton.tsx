@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 
 import { IconButton } from "@chakra-ui/react";
@@ -15,8 +17,10 @@ const PlayPauseButton: React.FC<IPlayPauseButtonProps> = (props) => {
     } = props;
     return (
         <IconButton 
-                aria-label="Play"
-                onClick={handlePlay}
+            size="xs"
+            aria-label="PlayPause"
+            variant="outline"
+            onClick={handlePlay}
         >
             {isRunning ? <Pause /> : <Play/>}
         </IconButton>

@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect } from "react";
 
 import { useStopwatch } from "@/hooks/time/useStopwatch";
@@ -53,42 +55,33 @@ const TaskTracker: React.FC<ITaskTrackerProps> = (props) => {
     }
 
     return (
-        <Flex alignItems="center" gap={5}>
+        <Flex
+            className="tracker-sidebar" 
+            alignItems="center" 
+            gap={5}
+        >
             <PlayPauseButton 
                     isRunning={isRunning}
                     handlePlay={handlePlay}
                 />
-            <motion.nav 
-                        className="nav-sidebar"
-                        animate={{ width: isOpen ? "12rem" : "0"}} 
-                        transition={{ duration: 0.5 }}   
-                    >
-                {isOpen && (
-                    <MotionComponent
-                        className="task-tracker__info"
-                        initial={{ opacity: 0, x: -10}}
-                        animate={{ 
-                            opacity: 1, 
-                            x: 0,
-                        }}
-                        exit={{ opacity: 0, x: -10 }}
-                        transition={{ duration: 2 }}    
-                    >
-                        <Stat.Label>Создать юнит тесты</Stat.Label>
-                        <Text>{formatTime(fullTime)}/{formatTime(time)}</Text>
-                        <Progress.Root 
-                            min={0} 
-                            max={fullTime} 
-                            value={time}
-                            variant="outline"
-                        >
-                            <Progress.Track>
-                                <Progress.Range />
-                            </Progress.Track>
-                        </Progress.Root>
-                    </MotionComponent>
-                )}
-                    </motion.nav>
+            <Stat.Root
+                className="task-tracker__info"
+                size="sm"
+            >
+                <Stat.Label>Создать юнит тесты</Stat.Label>
+                <Text textStyle="sm">{formatTime(fullTime)}/{formatTime(time)}</Text>
+                <Progress.Root 
+                    size="xs"
+                    min={0} 
+                    max={fullTime} 
+                    value={time}
+                    variant="outline"
+                >
+                    <Progress.Track>
+                        <Progress.Range />
+                    </Progress.Track>
+                </Progress.Root>
+            </Stat.Root>
         </Flex>
     );
 }

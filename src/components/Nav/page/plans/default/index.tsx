@@ -1,9 +1,11 @@
+"use client"
+
 import React from "react";
 import { Heading, Wrap, WrapItem } from "@chakra-ui/react"
-import { LinkInterface } from "@/types/lib/nav";
+import { NavLinksInterface } from "@/types/lib/nav";
 
 interface PropsNavPlans{
-    links: LinkInterface[]
+    links: NavLinksInterface[]
 }
 
 const NavPlans: React.FC<PropsNavPlans> = (props) => {

@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 import { useSidebarStore } from "@/stores/sidebar";
 import { motion } from "framer-motion";
@@ -14,20 +16,14 @@ import ListSidebar from "./List";
 import "./style.scss";
 
 const NavSidebarGeneral: React.FC = () => {
-    const { isOpen } = useSidebarStore();
-
     return (
-        <motion.nav 
-            className="nav-sidebar"
-            animate={{ width: isOpen ? "100%" : "3rem"}} 
-            transition={{ duration: 0.5 }}   
-        >
+        <Box as="nav" className="nav-sidebar">
             <Box as="ul" listStyleType="none">
                 {navLinks.map((link, index) => (
                     <ListSidebar key={index} link={link} />
                 ))}
             </Box>
-        </motion.nav>
+        </Box>
     );
 }
 

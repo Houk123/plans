@@ -1,16 +1,15 @@
+@mixin liMargin{
+    margin-inline-start: $m-xs;
+    margin-block-start: $m-2xs; 
+}
+
 .nav-sidebar{
-    //width: 15rem;
-    overflow: hidden;
-    ul{
-        li{
-            margin-inline-start: $m-xs;
-            margin-block-start: $m-2xs;
-        }
-        :first-child{
-            margin-block-start: 0;
+    li{
+        ul{
+            @include liMargin;
         }
     }
-    
+
     &__link{
         align-items: center;
     }

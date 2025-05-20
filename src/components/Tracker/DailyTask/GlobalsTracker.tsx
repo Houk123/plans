@@ -1,14 +1,14 @@
+"use client"
+
 import React from "react"
 
 import { useStopwatch } from "@/hooks/time/useStopwatch";
-import { Flex, Text, VStack } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { useTimerStore } from "@/stores/timers";
 import PlayPauseButton from "@/components/ui-my-plans/PlayPauseButton";
 import { formatTime } from "@/scripts/time";
-import { motion } from "framer-motion";
 import { useSidebarStore } from "@/stores/sidebar";
 
-const MotionComponent = motion.create(Flex)
 
 const GlobalsTracker: React.FC = () => {
     const { isOpen } = useSidebarStore();
@@ -37,23 +37,14 @@ const GlobalsTracker: React.FC = () => {
     }
 
     return (
-        <MotionComponent
-            animate={{ width: isOpen ? "100%" : "3rem"}} 
-            transition={{ duration: 0.5 }}   
-            gap={5}
-            overflow="hidden"
-        >
+        <Flex gap={5}>
             <PlayPauseButton 
                 isRunning={isRunning}
                 handlePlay={handlePlay}
             /> 
-            {isOpen && (
-                <>
-                    <Text>Время</Text>
-                    <Text>{formatTime(time)}</Text>  
-                </>
-            )}     
-        </MotionComponent>
+            <Text>Время</Text>
+            <Text>{formatTime(time)}</Text>   
+        </Flex>
     );
 }
 

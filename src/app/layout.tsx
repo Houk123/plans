@@ -3,6 +3,7 @@ import { Provider } from "@/components/ui/provider";
 import { Geist, Geist_Mono } from "next/font/google";
 import Sidebar from "@/components/Sidebar/General/default";
 import "./globals.css";
+import { ColorModeButton } from "@/components/ui/color-mode";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,8 @@ export default function RootLayout({
         <Provider>
           <main>
             <Sidebar />
+            <ColorModeButton position="fixed" right="1rem" top="1rem"/>
+
             {children}
           </main>
         </Provider>

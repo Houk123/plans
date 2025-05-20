@@ -1,3 +1,5 @@
+"use client"
+
 import { NavLinksInterface } from "@/types/lib/nav";
 import { Box, Collapsible } from "@chakra-ui/react";
 import LinkSidebar from "./Link";
@@ -16,9 +18,9 @@ const ListSidebar: React.FC<IListSidebar> = (props) => {
                     <LinkSidebar link={link} />
                     <Collapsible.Content>
                         <Box as="ul" listStyleType="none">
-                        {link.submenu.map((submenuLink, index) => (
-                            <ListSidebar key={index} link={submenuLink} />
-                        ))}
+                            {link.submenu.map((submenuLink, index) => (
+                                <ListSidebar key={index} link={submenuLink} />
+                            ))}
                         </Box>
                     </Collapsible.Content>
                 </Collapsible.Root>

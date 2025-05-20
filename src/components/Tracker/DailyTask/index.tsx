@@ -1,8 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+"use client"
+
+import React from "react";
 
 import { 
     Box, 
-    VStack, 
+    Card
 } from "@chakra-ui/react";
 
 import GlobalsTracker from "./GlobalsTracker";
@@ -12,21 +14,27 @@ import "./style.scss";
 
 const DailyTaskTracker: React.FC = () => {
     return (
-        <VStack w="100%" alignItems="start">
-            <GlobalsTracker/>
-            <Box as="ul" gap="5rem">
-                {
-                    tasksTime.map(task => (
-                        <li key={task.id}>
-                            <TaskTracker
-                                idTask={task.id}
-                                fullTime={task.fullTime}
-                            />
-                        </li>
-                    ))
-                }
-            </Box>
-        </VStack>
+        <Card.Root w="100%" maxH="25rem" minH="20rem"  overflow="auto" size="sm">
+            <Card.Header>
+                <Card.Title>Рабочий день</Card.Title>
+                <GlobalsTracker/>
+            </Card.Header>
+            <Card.Body>
+                <Card.Title>Задачи</Card.Title> 
+                <Box as="ul" display="flex" flexDirection="column" gap={3}>
+                    {
+                        tasksTime.map(task => (
+                            <li key={task.id}>
+                                <TaskTracker
+                                    idTask={task.id}
+                                    fullTime={task.fullTime}
+                                />
+                            </li>
+                        ))
+                    }
+                </Box>
+            </Card.Body>
+        </Card.Root>     
     )
 }
 

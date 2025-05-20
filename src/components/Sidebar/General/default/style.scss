@@ -9,6 +9,8 @@
 
     font-size: $ft-s-lg;
     &__main{
+        height: 100%;
         align-items: start;
+        justify-content: space-between;
     }
 }
