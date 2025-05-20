@@ -24,8 +24,6 @@ const TaskTracker: React.FC<ITaskTrackerProps> = (props) => {
         fullTime
     } = props;
 
-    const { isOpen } = useSidebarStore();
-
     const addTask = useTimerStore(state => state.addTask);
     const setTime = useTimerStore(state => state.setTimeTask);
     const time = useTimerStore(state => state.timersTask[idTask]?.time ?? 0);

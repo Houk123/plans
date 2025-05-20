@@ -14,6 +14,7 @@ const MotionComponent = motion.create(Icon)
 const LinkSidebar: React.FC<ILinkSidebar> = (props) => {
     const { link } = props;
     const [isOpen, setIsOpen] = useState(false); 
+    
     return (
         <Tooltip content={link.title}>
             <Flex className="nav-sidebar__link">
