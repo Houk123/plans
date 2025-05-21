@@ -4,7 +4,7 @@ import React from "react";
 
 const UserPanelDefault: React.FC = () => {
     return (
-        <Card.Root size="sm">
+        <Card.Root size="sm" variant="subtle">
             <Card.Body>
                 <HStack gap="4">
                     <Avatar.Root>

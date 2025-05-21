@@ -14,7 +14,7 @@ import "./style.scss";
 
 const DailyTaskTracker: React.FC = () => {
     return (
-        <Card.Root w="100%" maxH="25rem" minH="20rem"  overflow="auto" size="sm">
+        <Card.Root w="100%" maxH="25rem" minH="20rem"  overflow="auto" size="sm" variant="subtle">
             <Card.Header>
                 <Card.Title>Рабочий день</Card.Title>
                 <GlobalsTracker/>

@@ -1,0 +1,7 @@
+.header--default{
+    border-bottom: $b-lines;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: $p-md;
+}

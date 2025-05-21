@@ -14,7 +14,7 @@ const SidebarGenaral: React.FC = () => {
     return (
         <aside className="sidebar">
             <VStack className="sidebar__main" alignItems="start">
-                <VStack alignItems="start">
+                <VStack alignItems="start" gap={4}>
                     <UserPanelDefault />
                     <NavSidebarGeneral />
                 </VStack>
