@@ -1,8 +1,6 @@
 "use client"
 
 import React from "react";
-import { useSidebarStore } from "@/stores/sidebar";
-import { motion } from "framer-motion";
 
 import { navLinks } from "@/lib/nav/NavLinks";
 

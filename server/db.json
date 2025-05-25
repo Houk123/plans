@@ -1,0 +1,40 @@
+{
+    "tasks": [
+        {
+            "id": 1,
+            "user_id": 1,
+            "fullTime": 80000,
+            "name": "Написать интеграционные тесты"
+        },
+        {
+            "id": 2,
+            "user_id": 1,
+            "fullTime": 120,
+            "name": "Обновить цвет кнопки"
+        },
+        {
+            "id": 3,
+            "user_id": 1,
+            "fullTime": 3000,
+            "name": "Проверить pull request"
+        },
+        {
+            "id": 4,
+            "fullTime": 80000,
+            "user_id": 0,
+            "name": "Написать интеграционные тесты"
+        },
+        {
+            "id": 5,
+            "fullTime": 120,
+            "user_id": 0,
+            "name": "Обновить цвет кнопки"
+        },
+        {
+            "id": 6,
+            "fullTime": 3000,
+            "user_id": 0,
+            "name": "Проверить pull request"
+        }
+    ]
+}

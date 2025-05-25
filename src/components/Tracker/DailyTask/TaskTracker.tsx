@@ -8,26 +8,21 @@ import { Flex, Progress, Stat, Text } from "@chakra-ui/react";
 import { useTimerStore } from "@/stores/timers";
 import PlayPauseButton from "@/components/ui-my-plans/PlayPauseButton";
 import { formatTime } from "@/scripts/time";
-import { useSidebarStore } from "@/stores/sidebar";
-import { motion } from "framer-motion";
-
-const MotionComponent = motion.create(Stat.Root)
+import { Task } from "@/interfaces/task";
 
 interface ITaskTrackerProps{
-    idTask: number
-    fullTime: number
+    task: Task
 }
 
 const TaskTracker: React.FC<ITaskTrackerProps> = (props) => {
     const {
-        idTask,
-        fullTime
+        task
     } = props;
 
     const addTask = useTimerStore(state => state.addTask);
     const setTime = useTimerStore(state => state.setTimeTask);
-    const time = useTimerStore(state => state.timersTask[idTask]?.time ?? 0);
-    const isRunning = useTimerStore(state => state.timersTask[idTask]?.isRunning);
+    const time = useTimerStore(state => state.timersTask[task.id]?.time ?? 0);
+    const isRunning = useTimerStore(state => state.timersTask[task.id]?.isRunning);
     const startTask = useTimerStore(state => state.startTask);
     const stopTask = useTimerStore(state => state.stopTask);
 
@@ -35,14 +30,14 @@ const TaskTracker: React.FC<ITaskTrackerProps> = (props) => {
             start, stop, 
     } = useStopwatch({
         isRunning: isRunning,
-        startTime: () => startTask(idTask),
-        stopTime: () => stopTask(idTask),
-        incrementTime: () => setTime(idTask, (prev) => prev + 1),
+        startTime: () => startTask(task.id),
+        stopTime: () => stopTask(task.id),
+        incrementTime: () => setTime(task.id, (prev) => prev + 1),
     });
 
     useEffect(() => {
-        addTask(idTask)
-    },[idTask]);
+        addTask(task.id)
+    },[task.id, addTask]);
 
     const handlePlay = () => {
         if(isRunning){
@@ -66,12 +61,12 @@ const TaskTracker: React.FC<ITaskTrackerProps> = (props) => {
                 className="task-tracker__info"
                 size="sm"
             >
-                <Stat.Label>Создать юнит тесты</Stat.Label>
-                <Text textStyle="sm">{formatTime(fullTime)}/{formatTime(time)}</Text>
+                <Stat.Label>{task.name}</Stat.Label>
+                <Text textStyle="sm">{formatTime(task.fullTime)}/{formatTime(time)}</Text>
                 <Progress.Root 
                     size="xs"
                     min={0} 
-                    max={fullTime} 
+                    max={task.fullTime} 
                     value={time}
                     variant="outline"
                 >

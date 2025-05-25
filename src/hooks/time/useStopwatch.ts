@@ -35,7 +35,7 @@ export const useStopwatch = (props: IStopwatch) => {
             clearInterval(intervalRef.current);
             }
         };
-    }, [isRunning]);
+    }, [isRunning, incrementTime]);
 
     const start = () => {
         startTime()

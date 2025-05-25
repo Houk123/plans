@@ -8,7 +8,8 @@ import {
     Building,
     BriefcaseBusiness,
     Handshake,
-    LayoutList
+    LayoutList,
+    Building2
 } from "lucide-react";
 
 export const navLinks: NavLinksInterface[] = [
@@ -17,6 +18,12 @@ export const navLinks: NavLinksInterface[] = [
         title: "Главная",
         href: "/",
         icon: <House />
+    },
+    {
+        name: "company",
+        title: "Компания",
+        href: "/",
+        icon: <Building2 />
     },
     {
         name: "team",
